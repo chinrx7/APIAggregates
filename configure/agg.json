@@ -1,0 +1,17 @@
+[
+    {
+        "Name": "G1",
+        "StartDate" : "",
+        "Tags":[
+            "J405.ACM.W",
+            "J405.SCADA.PYRANO",
+            "J405.SCADA.PYRANO1",
+            "J405.SCADA.PYRANO2",
+            "J405.SCADA.PVTEMP1",
+            "J405.SCADA.PVTEMP2",
+            "J405.SCADA.AMBTEMP",
+            "J405.SCADA.WINDSPD",
+            "J405.INV1.WAC"
+        ]
+    }
+]
