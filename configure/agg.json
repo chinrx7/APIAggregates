@@ -1,9 +1,10 @@
 [
     {
         "Name": "G1",
-        "StartDate" : "",
-        "Tags":[
-            "J405.ACM.W",
+        "StartDate": "",
+        "Tags": [
+            "J405.SCADA.TODAY_ENERGY",
+            "J405.SCADA.PR",
             "J405.SCADA.PYRANO",
             "J405.SCADA.PYRANO1",
             "J405.SCADA.PYRANO2",
@@ -11,7 +12,26 @@
             "J405.SCADA.PVTEMP2",
             "J405.SCADA.AMBTEMP",
             "J405.SCADA.WINDSPD",
-            "J405.INV1.WAC"
+            "J405.SCADA.CBCLOSE",
+            "J405.PQM.W",
+            "J405.PQM.VA",
+            "J405.PQM.VAR",
+            "J405.PQM.V",
+            "J405.PQM.V1",
+            "J405.PQM.V2",
+            "J405.PQM.V3",
+            "J405.PQM.I",
+            "J405.PQM.I1",
+            "J405.PQM.I2",
+            "J405.PQM.I3",
+            "J405.PQM.HZ",
+            "J405.PQM.PF",
+            "J405.INV1.WAC",
+            "J405.INV2.WAC",
+            "J405.INV3.WAC",
+            "J405.INV4.WAC",
+            "J405.INV5.WAC",
+            "J405.INV6.WAC"
         ]
     }
 ]
