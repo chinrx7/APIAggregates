@@ -27,23 +27,27 @@ getAgg = async () => {
     //console.log(req)
     let result;
 
-    // const headers ={ Authorization: token};
-    // console.log(headers)
+    console.log(Url)
+
+    const headers = { Authorization: token };
 
     await axios.post(Url + 'getplotdata', req, { headers: { Authorization: token } })
         .then((res) => {
             //console.log(res.data)
             result = res.data;
         });
-    
+
 
     const saveReq = tranFormData(result);
 
+   // console.log(saveReq)
 
+    if(saveReq.length >0){
     await axios.post(Url + 'insertagg',  saveReq, { headers: { Authorization: token } })
         .then((res) => {
-            console.log(res.data);
+            //console.log(res.data);
         });
+    }
 }
 
 getReqTime = () => {
@@ -71,7 +75,10 @@ tranFormData = (resData) => {
             }
             i = i + 1;
         })
-        reqData.push(r);
+        const cntp = Object.keys(r.Records).length;
+        if (cntp > 0) {
+            reqData.push(r);
+        }
     })
 
     //console.log(reqData)

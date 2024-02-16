@@ -6,12 +6,14 @@ exports.config = config;
 exports.aggCfg = aggCfg;
 const schedule = require('node-schedule');
 const agg = require('./middleware/aggregation');
+const log = require('./middleware/log');
 
 const rule = new schedule.RecurrenceRule();
 rule.minute = [0, 10, 20, 30, 40, 50];
-agg.getData();
+
+log.loginfo('app start at: ' + new Date);
 
 const job = schedule.scheduleJob(rule, () => {
-    console.log(new Date)
+    log.loginfo('app tick at: ' + new Date)
     agg.getData();
 })
