@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { config, aggCfg } = require('../app')
+const logger = require('./log');
 
 const Url = config.API;
 const tagCfgs = aggCfg;
@@ -27,7 +28,7 @@ getAgg = async () => {
     //console.log(req)
     let result;
 
-    console.log(Url)
+    //console.log(Url)
 
     const headers = { Authorization: token };
 
@@ -45,7 +46,13 @@ getAgg = async () => {
     if(saveReq.length >0){
     await axios.post(Url + 'insertagg',  saveReq, { headers: { Authorization: token } })
         .then((res) => {
-            //console.log(res.data);
+            console.log(res.data);
+            if(res.data === 'ok'){
+                logger.loginfo('insert agg : ' + new Date);
+            }
+            else{
+                logger.loginfo('insert agg not success!!!');
+            }
         });
     }
 }
