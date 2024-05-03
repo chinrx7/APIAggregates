@@ -13,7 +13,9 @@ rule.minute = [0, 10, 20, 30, 40, 50];
 
 log.loginfo('app start at: ' + new Date);
 
+agg.AggTask();
+
 const job = schedule.scheduleJob(rule, () => {
     log.loginfo('app tick at: ' + new Date)
-    agg.getData();
+    //agg.getData();
 })

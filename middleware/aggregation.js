@@ -22,10 +22,69 @@ getToken = async () => {
     return token;
 }
 
+module.exports.AggTask = async () => {
+    const token = await getToken();
+    const tagAgg = await LoadTagConfgig(token);
+
+    console.log(tagAgg[0].Tags.length);
+}
+
+LoadTagConfgig = async (token) => {
+    let plotTag;
+    await axios.post(Url + 'getplottag', '', { headers: { Authorization: token } })
+        .then((res) => {
+            plotTag = res.data;
+        });
+
+    let groupPlot = [];
+    const g  = plotTag.length/10000;
+    
+    
+    const nLoop = Math.ceil(g);
+
+    let nTag
+
+    for(let i=0; i< nLoop;i++){
+
+        nTag = i*10000;
+
+        const gCfg = { Name: 'G'+i, Tags: [] }
+        if((i+1) === nLoop){
+            gCfg.Tags.push(plotTag.slice(nTag,plotTag.length))
+        }
+        else{
+            gCfg.Tags.push(plotTag.slice(nTag,nTag+9999));
+        }
+
+        groupPlot.push(gCfg);
+
+        
+        //console.log(G)
+
+    }
+
+    tranFormData(groupPlot)
+    return groupPlot;
+}
+
+tranFormData = (gTags) => {
+
+
+    gTags.forEach(g =>{
+        console.log(g.Name)
+       g.Tags.forEach(t => {
+        console.log(t)
+       })
+    })
+
+
+}
+
 getAgg = async () => {
     const token = await getToken();
     const req = tranFormReq(tagCfgs);
-    //console.log(req)
+
+    console.log(req)
     let result;
 
     //console.log(Url)
@@ -41,7 +100,7 @@ getAgg = async () => {
 
     const saveReq = tranFormData(result);
 
-   // console.log(saveReq)
+    console.log(saveReq)
 
     if(saveReq.length >0){
     await axios.post(Url + 'insertagg',  saveReq, { headers: { Authorization: token } })
@@ -67,7 +126,7 @@ getReqTime = () => {
     return { StartTime: StartTime, EndTime: EndTime }
 }
 
-tranFormData = (resData) => {
+tranFormData2 = (resData) => {
     //console.log(resData)
     let reqData = [];
     resData.forEach(res => {
