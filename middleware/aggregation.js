@@ -25,6 +25,7 @@ getToken = async () => {
 getAgg = async () => {
     const token = await getToken();
     const req = tranFormReq(tagCfgs);
+    console.log(Url)
     //console.log(req)
     let result;
 
@@ -41,14 +42,14 @@ getAgg = async () => {
 
     const saveReq = tranFormData(result);
 
-   // console.log(saveReq)
+    //console.log(saveReq)
 
     if(saveReq.length >0){
     await axios.post(Url + 'insertagg',  saveReq, { headers: { Authorization: token } })
         .then((res) => {
-            console.log(res.data);
-            if(res.data === 'ok'){
-                logger.loginfo('insert agg : ' + new Date);
+            //console.log(res.data);
+            if(res.data === 'Insert agg success!'){
+                logger.loginfo('insert agg success : ' + new Date);
             }
             else{
                 logger.loginfo('insert agg not success!!!');
