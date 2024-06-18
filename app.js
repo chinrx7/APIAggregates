@@ -13,7 +13,7 @@ rule.minute = [0, 10, 20, 30, 40, 50];
 
 log.loginfo('app start at: ' + new Date);
 
-const job = schedule.scheduleJob('*/1 * * * *', () => {
+const job = schedule.scheduleJob('*/10 * * * *', () => {
     log.loginfo('app tick at: ' + new Date)
     agg.getData();
 })
